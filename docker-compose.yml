@@ -35,3 +35,16 @@ services:
           - DBURL=jdbc:postgresql://postgres:5432/yourshelfy
           - DBUSER=postgres
           - DBPASS=mysecretpassword
+    recipes-backend:
+        image: qbixer/recipes-backend
+        depends_on:
+          - postgres
+        ports:
+          - 8083:8083
+        environment:
+          - SERVER_PORT=8083
+          - DBURL=jdbc:postgresql://postgres:5432/recipes
+          - DBUSER=postgres
+          - DBPASS=mysecretpassword
+          - AUTH_USER=admin
+          - AUTH_PASS=admin
